@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Main = () => {
-	return <div>Main</div>;
+const Main = ({ match }) => {
+	return <div>{match.params.id}</div>;
 };
 
 export default Main;
