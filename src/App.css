@@ -82,3 +82,22 @@ body {
 	font-size: small;
 	color: #000000;
 }
+
+.main-container {
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.empty {
+	font-size: 22px;
+	color: #999999;
+	font-weight: bold;
+}
+
+.oops {
+	font-size: 50px;
+	color: #000000;
+	font-weight: normal;
+}
