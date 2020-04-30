@@ -1,9 +1,11 @@
 import React from 'react';
+import Navbar from '../components/navbar';
+import '../App.css';
 
 const Login = () => {
 	return (
-		<div style={{ backgroundColor: '#c1c1c1', display: 'flex' }}>
-			<h1>Hello Dear</h1>
+		<div className="login-container" style={{ display: 'flex', flexDirection: 'column' }}>
+			<Navbar />
 		</div>
 	);
 };
