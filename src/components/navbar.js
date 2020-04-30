@@ -5,11 +5,9 @@ function Navbar() {
 	return (
 		<nav className="navMain">
 			<div className="nav-wrapper">
-				<a href="#" className="brand-logo center">
-					<Link to="/">
-						<img style={{ height: 50, marginTop: 10 }} src={require('../tinderLogo.png')} alt="Logo" />
-					</Link>
-				</a>
+				<Link to="/" className="brand-logo center">
+					<img style={{ height: 50, marginTop: 10 }} src={require('../tinderLogo.png')} alt="Logo" />
+				</Link>
 			</div>
 		</nav>
 	);
