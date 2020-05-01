@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import '../App.css';
 import api from '../helper/api';
+import '../App.css';
+import { Swipeable, direction } from 'react-deck-swiper';
+import Card from '../components/card';
+import Grid from '@material-ui/core/Grid';
 
 const Main = ({ match }) => {
 	const [users, setUsers] = useState([]);
@@ -16,17 +19,68 @@ const Main = ({ match }) => {
 			headers: { user: match.params.id },
 		});
 
+		console.log(response.data);
+
 		setUsers(response.data);
 	};
 
+	const handleOnSwipe = (swipeDirection) => {
+		if (swipeDirection === direction.RIGHT) {
+			console.log('your right');
+		}
+
+		if (swipeDirection === direction.LEFT) {
+			console.log('your left');
+		}
+
+		setUsers((prev) => prev.slice(1));
+	};
+
+	if (users.length > 0) {
+		return (
+			<>
+				<Navbar />
+				<div className="main-container">
+					{users.length > 0 && (
+						<Grid
+							container
+							spacing={3}
+							style={{
+								justifyContent: 'center',
+								flexDirection: 'column',
+								alignItems: 'center',
+								display: 'flex',
+							}}
+						>
+							<Grid
+								item
+								xs={12}
+								style={{
+									justifyContent: 'center',
+									flexDirection: 'column',
+									alignItems: 'center',
+									display: 'flex',
+								}}
+							>
+								<Swipeable onSwipe={handleOnSwipe} style={{ backgroundColor: '#fff' }}>
+									<Card item={users[0]} />
+								</Swipeable>
+							</Grid>
+						</Grid>
+					)}
+				</div>
+				<Footer />
+			</>
+		);
+	}
 	return (
 		<>
-			<div className="main-container" style={{ display: 'flex', flexDirection: 'column' }}>
+			<div className="empty-container" style={{ display: 'flex', flexDirection: 'column' }}>
 				<Navbar />
-				<div className="main-container" style={{ display: 'flex', flexDirection: 'column' }}>
+				<div className="empty-container" style={{ display: 'flex', flexDirection: 'column' }}>
 					<p>{JSON.stringify(users[0])}</p>
 
-					{false && (
+					{true && (
 						<>
 							<div className="oops">OOPS!</div>
 							<div className="empty">No more devs! :(</div>
