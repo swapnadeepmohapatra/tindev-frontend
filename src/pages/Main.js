@@ -26,7 +26,7 @@ const Main = ({ match }) => {
 
 	const handleOnSwipe = (swipeDirection) => {
 		if (swipeDirection === direction.RIGHT) {
-			console.log('your right');
+			addLikeUser(users[0]._id);
 		}
 
 		if (swipeDirection === direction.LEFT) {
@@ -34,6 +34,12 @@ const Main = ({ match }) => {
 		}
 
 		setUsers((prev) => prev.slice(1));
+	};
+
+	const addLikeUser = async (id) => {
+		await api.post(`/user/${id}/likes`, null, {
+			headers: { user: match.params.id },
+		});
 	};
 
 	if (users.length > 0) {
