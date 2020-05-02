@@ -8,6 +8,8 @@ import Card from '../components/card';
 import Grid from '@material-ui/core/Grid';
 import dislike from '../assets/dislike.svg';
 import like from '../assets/like.svg';
+import yes from '../assets/yes.svg';
+import nope from '../assets/nope.svg';
 
 const Main = ({ match }) => {
 	const [users, setUsers] = useState([]);
@@ -89,6 +91,17 @@ const Main = ({ match }) => {
 									<button type="button" onClick={() => addLikeUser(users[0]._id)}>
 										<img src={like} className="btnLike" alt="Like" />
 									</button>
+								</div>
+
+								<div className="help">
+									<div>
+										<img src={nope} alt="Like" />
+										<p>NOPE</p>
+									</div>
+									<div>
+										<img src={yes} alt="Like" />
+										<p>LIKE</p>
+									</div>
 								</div>
 							</Grid>
 						</Grid>

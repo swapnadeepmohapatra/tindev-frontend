@@ -140,3 +140,27 @@ body {
 	height: 40px;
 	width: 40px;
 }
+
+.help {
+	display: flex;
+	padding: 16px;
+}
+
+.help div {
+	display: flex;
+	align-items: center;
+	margin: 12px;
+	margin-top: 52px;
+}
+
+.help p {
+	color: #545454;
+	font-weight: bold;
+	font-size: 12px;
+	padding-left: 4px;
+}
+
+.help img {
+	height: 24px;
+	width: 24px;
+}
