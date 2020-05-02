@@ -10,12 +10,20 @@ import dislike from '../assets/dislike.svg';
 import like from '../assets/like.svg';
 import yes from '../assets/yes.svg';
 import nope from '../assets/nope.svg';
+import itsamatch from '../assets/itsamatch.png';
+import io from 'socket.io-client';
 
 const Main = ({ match }) => {
 	const [users, setUsers] = useState([]);
+	const [userMatch, setUserMatch] = useState(null);
+	const [meUser, setMeUser] = useState(null);
 
 	useEffect(() => {
 		getUsers();
+	}, [match.params.id]);
+
+	useEffect(() => {
+		getMatch();
 	}, [match.params.id]);
 
 	const getUsers = async () => {
@@ -23,9 +31,17 @@ const Main = ({ match }) => {
 			headers: { user: match.params.id },
 		});
 
-		console.log(response.data);
-
 		setUsers(response.data);
+	};
+
+	const getMatch = () => {
+		const socket = io('http://localhost:4242', {
+			query: { user: match.params.id },
+		});
+
+		socket.on('match', (user) => {
+			setUserMatch(user);
+		});
 	};
 
 	const handleOnSwipe = (swipeDirection) => {
@@ -53,6 +69,24 @@ const Main = ({ match }) => {
 
 		setUsers((prev) => prev.slice(1));
 	};
+
+	if (userMatch) {
+		return (
+			<div className="match-container">
+				<img src={itsamatch} alt="It's a match!" />
+				<div>
+					<img className="avatar" src={userMatch.photo} alt="avatar" />
+					<img className="avatar" src={userMatch.photo} alt="avatar" />
+				</div>
+
+				<strong>{userMatch.name}</strong>
+				<p>{userMatch.bio}</p>
+				<button type="button" onClick={() => setUserMatch(null)}>
+					Close
+				</button>
+			</div>
+		);
+	}
 
 	if (users.length > 0) {
 		return (
@@ -92,7 +126,6 @@ const Main = ({ match }) => {
 										<img src={like} className="btnLike" alt="Like" />
 									</button>
 								</div>
-
 								<div className="help">
 									<div>
 										<img src={nope} alt="Like" />
