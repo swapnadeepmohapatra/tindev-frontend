@@ -9,7 +9,14 @@ import '../App.css';
 
 export default function Card({ item: { name, bio, photo } }) {
 	return (
-		<MaterialCard style={{ maxWidth: 345, ':foucs': { backgroundColor: '#000000' } }}>
+		<MaterialCard
+			elevation={10}
+			style={{
+				maxWidth: 345,
+				':foucs': { backgroundColor: '#000000' },
+				borderRadius: 20,
+			}}
+		>
 			<CardActionArea>
 				<CardMedia
 					style={{ objectFit: 'cover', objectPosition: 'top', userSelect: 'none', pointerEvents: 'none' }}

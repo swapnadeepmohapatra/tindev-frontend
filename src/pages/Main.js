@@ -30,7 +30,7 @@ const Main = ({ match }) => {
 		}
 
 		if (swipeDirection === direction.LEFT) {
-			console.log('your left');
+			addDislikeUser(users[0]._id);
 		}
 
 		setUsers((prev) => prev.slice(1));
@@ -38,6 +38,12 @@ const Main = ({ match }) => {
 
 	const addLikeUser = async (id) => {
 		await api.post(`/user/${id}/likes`, null, {
+			headers: { user: match.params.id },
+		});
+	};
+
+	const addDislikeUser = async (id) => {
+		await api.post(`/user/${id}/dislikes`, null, {
 			headers: { user: match.params.id },
 		});
 	};
@@ -68,7 +74,7 @@ const Main = ({ match }) => {
 									display: 'flex',
 								}}
 							>
-								<Swipeable onSwipe={handleOnSwipe} style={{ backgroundColor: '#fff' }}>
+								<Swipeable onSwipe={handleOnSwipe}>
 									<Card item={users[0]} />
 								</Swipeable>
 							</Grid>
