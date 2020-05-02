@@ -6,6 +6,8 @@ import '../App.css';
 import { Swipeable, direction } from 'react-deck-swiper';
 import Card from '../components/card';
 import Grid from '@material-ui/core/Grid';
+import dislike from '../assets/dislike.svg';
+import like from '../assets/like.svg';
 
 const Main = ({ match }) => {
 	const [users, setUsers] = useState([]);
@@ -32,20 +34,22 @@ const Main = ({ match }) => {
 		if (swipeDirection === direction.LEFT) {
 			addDislikeUser(users[0]._id);
 		}
-
-		setUsers((prev) => prev.slice(1));
 	};
 
 	const addLikeUser = async (id) => {
 		await api.post(`/user/${id}/likes`, null, {
 			headers: { user: match.params.id },
 		});
+
+		setUsers((prev) => prev.slice(1));
 	};
 
 	const addDislikeUser = async (id) => {
 		await api.post(`/user/${id}/dislikes`, null, {
 			headers: { user: match.params.id },
 		});
+
+		setUsers((prev) => prev.slice(1));
 	};
 
 	if (users.length > 0) {
@@ -77,6 +81,15 @@ const Main = ({ match }) => {
 								<Swipeable onSwipe={handleOnSwipe}>
 									<Card item={users[0]} />
 								</Swipeable>
+								<div className="buttons">
+									<button type="button" onClick={() => addDislikeUser(users[0]._id)}>
+										<img src={dislike} className="btnDislike" alt="Dislike" />
+									</button>
+
+									<button type="button" onClick={() => addLikeUser(users[0]._id)}>
+										<img src={like} className="btnLike" alt="Like" />
+									</button>
+								</div>
 							</Grid>
 						</Grid>
 					)}

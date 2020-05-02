@@ -10,7 +10,7 @@ import '../App.css';
 export default function Card({ item: { name, bio, photo } }) {
 	return (
 		<MaterialCard
-			elevation={10}
+			elevation={5}
 			style={{
 				maxWidth: 345,
 				':foucs': { backgroundColor: '#000000' },

@@ -108,3 +108,35 @@ body {
 	padding: 50px 0;
 	text-align: center;
 }
+
+.buttons {
+	padding-top: 18px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 10px;
+}
+.buttons button {
+	height: 70px;
+	width: 70px;
+	box-shadow: 0 2px 6px 0 rgba(112, 125, 134, 0.14);
+	border: none;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+}
+
+.buttons button:hover {
+	transform: scale(1.1);
+	transition: all 0.5s;
+}
+
+.btnDislike {
+	height: 30px;
+	width: 30px;
+}
+
+.btnLike {
+	margin-top: 5px;
+	height: 40px;
+	width: 40px;
+}
