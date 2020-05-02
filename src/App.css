@@ -167,15 +167,19 @@ body {
 
 .match-container {
 	position: absolute;
-	top: 0;
+	/* top: 0; */
 	left: 0;
-	bottom: 0;
+	/* bottom: 0; */
 	right: 0;
+	padding-bottom: 20px;
+	padding-top: 70px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background: rgba(0, 0, 0, 0.8);
+	height: 100vh;
+	overflow: auto;
 }
 
 .match-container .avatar {
@@ -203,8 +207,22 @@ body {
 	text-align: center;
 }
 
-.match-container button {
-	border: 0;
+.match-container .contSwipe {
+	border: 2px solid #a1a1a1;
+	padding: 14px 78px;
+	border-radius: 8px;
+	background: none;
+	font-weight: bold;
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 18px;
+	margin-top: 30px;
+	cursor: pointer;
+}
+
+.match-container .sendMsg {
+	border: 2px solid #a1a1a1;
+	padding: 14px 92px;
+	border-radius: 8px;
 	background: none;
 	font-weight: bold;
 	color: rgba(255, 255, 255, 0.8);

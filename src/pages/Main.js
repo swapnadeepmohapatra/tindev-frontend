@@ -31,7 +31,13 @@ const Main = ({ match }) => {
 			headers: { user: match.params.id },
 		});
 
+		const myResponse = await api.get('/userById', {
+			headers: { userid: match.params.id },
+		});
+
 		setUsers(response.data);
+		setMeUser(myResponse.data);
+		console.log(myResponse.data);
 	};
 
 	const getMatch = () => {
@@ -75,14 +81,17 @@ const Main = ({ match }) => {
 			<div className="match-container">
 				<img src={itsamatch} alt="It's a match!" />
 				<div>
-					<img className="avatar" src={userMatch.photo} alt="avatar" />
+					<img className="avatar" src={meUser.photo} alt="avatar" />
 					<img className="avatar" src={userMatch.photo} alt="avatar" />
 				</div>
 
 				<strong>{userMatch.name}</strong>
 				<p>{userMatch.bio}</p>
-				<button type="button" onClick={() => setUserMatch(null)}>
-					Close
+				<button className="sendMsg" type="button" onClick={() => setUserMatch(null)}>
+					Send Message
+				</button>
+				<button className="contSwipe" type="button" onClick={() => setUserMatch(null)}>
+					Continue Swiping
 				</button>
 			</div>
 		);
