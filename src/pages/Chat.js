@@ -1,5 +1,7 @@
 import { db } from '../helper/firebase';
 import React, { useEffect, useState } from 'react';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 function Chat({ match }) {
 	const [message, setMessage] = useState([]);
@@ -16,20 +18,37 @@ function Chat({ match }) {
 
 	return (
 		<div>
-			{match.params.receiverId}
-			{match.params.senderId}
+			<Navbar />
+			{/* {match.params.receiverId}
+			{match.params.senderId} */}
 
-			<div>
+			<div className="chat-container" style={{ minHeight: '80vh' }}>
 				{message.length > 0 &&
 					message.map((msg) => {
-						return (
-							<>
-								<p>{JSON.stringify(msg)}</p>
-								<p>{msg.message}</p>
-							</>
-						);
+						if (msg.sender !== match.params.senderId) {
+							return (
+								<li className="self">
+									<div className="msg">
+										<p>{msg.name}</p>
+										<div className="message"> {msg.message}</div>
+										<div className="message"></div>
+									</div>
+								</li>
+							);
+						} else {
+							return (
+								<li className="other">
+									<div className="msg">
+										<p>{msg.name}</p>
+										<div className="message"> {msg.message}</div>
+										<div className="message"></div>
+									</div>
+								</li>
+							);
+						}
 					})}
 			</div>
+			<Footer />
 		</div>
 	);
 }
