@@ -230,3 +230,12 @@ body {
 	margin-top: 30px;
 	cursor: pointer;
 }
+
+nav i.material-icons {
+	font-size: 40px;
+	padding-top: 5px;
+}
+
+.background {
+	background: linear-gradient(270deg, #fd297b, #ff5846, #ff655b);
+}

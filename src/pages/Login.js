@@ -23,7 +23,7 @@ const Login = ({ history }) => {
 	return (
 		<>
 			<div className="login-container" style={{ display: 'flex', flexDirection: 'column' }}>
-				<Navbar />
+				<Navbar isHome={false} />
 				<div className="login-container">
 					<form onSubmit={handleSubmit}>
 						<h3>Find Your Coding Partner</h3>

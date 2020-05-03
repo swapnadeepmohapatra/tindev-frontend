@@ -100,7 +100,7 @@ const Main = ({ match }) => {
 	if (users.length > 0) {
 		return (
 			<>
-				<Navbar />
+				<Navbar isHome={true} user={meUser} />
 				<div className="main-container">
 					{users.length > 0 && (
 						<Grid
@@ -156,7 +156,7 @@ const Main = ({ match }) => {
 	return (
 		<>
 			<div className="empty-container" style={{ display: 'flex', flexDirection: 'column' }}>
-				<Navbar />
+				<Navbar isHome={true} user={meUser} />
 				<div className="empty-container" style={{ display: 'flex', flexDirection: 'column' }}>
 					<p>{JSON.stringify(users[0])}</p>
 
