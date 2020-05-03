@@ -46,8 +46,8 @@ function Sidebar({ user }) {
 				{user.matches.length > 0 &&
 					user.matches.map((usr) => {
 						return (
-							<Link>
-								<MatchCard matches={usr} key={usr._id} />
+							<Link className="sidenav-close" to={`/chat/${usr._id}/${user._id}`} key={usr._id}>
+								<MatchCard matches={usr} />
 							</Link>
 						);
 					})}
