@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import api from '../helper/api';
+import React, { useState } from 'react';
+import MatchCard from './matchCard';
+import { Link } from 'react-router-dom';
 
 function Sidebar({ user }) {
 	const [mymatches, setMymatches] = useState([]);
@@ -22,7 +23,7 @@ function Sidebar({ user }) {
 
 	if (user) {
 		return (
-			<ul id="slide-out" className="sidenav">
+			<ul id="slide-out" className="sidenav" style={{ backgroundColor: '#eef2f5' }}>
 				<li>
 					<div className="user-view">
 						<div className="background"></div>
@@ -45,13 +46,23 @@ function Sidebar({ user }) {
 				{user.matches.length > 0 &&
 					user.matches.map((usr) => {
 						return (
-							<li>
-								<a className="waves-effect" href="#!">
-									{usr.name}
-								</a>
-							</li>
+							<Link>
+								<MatchCard matches={usr} key={usr._id} />
+							</Link>
 						);
 					})}
+				{user.matches.length === 0 ? (
+					<div style={{ textAlign: 'center' }}>
+						<h4>Get Swiping</h4>
+						<p style={{ paddingLeft: 10, paddingRight: 10, color: '#545454' }}>
+							You'll start seeing matches here once you get swiping! When you're ready to chat, you can
+							message them directly from here.
+						</p>
+						<p style={{ color: '#545454' }}>Swipe on!</p>
+					</div>
+				) : (
+					<></>
+				)}
 				<li></li>
 			</ul>
 		);

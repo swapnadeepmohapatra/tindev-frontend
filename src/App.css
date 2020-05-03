@@ -239,3 +239,20 @@ nav i.material-icons {
 .background {
 	background: linear-gradient(270deg, #fd297b, #ff5846, #ff655b);
 }
+
+.match-card {
+	padding-left: 10px;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border: none;
+	margin: 5px;
+	margin-top: 10px;
+	box-shadow: 0 2px 6px 0 rgba(112, 125, 134, 0.14);
+	border: none;
+	background: #fff;
+	cursor: pointer;
+	color: black;
+	border-radius: 10px;
+}
