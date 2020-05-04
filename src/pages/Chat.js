@@ -21,6 +21,14 @@ function Chat({ match }) {
 		setMessageText(e.target.value);
 	};
 
+	const handleEnter = (e) => {
+		if (e.keyCode === 13) {
+			e.preventDefault();
+			e.stopPropagation();
+			sendMessage();
+		}
+	};
+
 	const sendMessage = () => {
 		const msgData = {
 			message: messageText,
@@ -73,19 +81,25 @@ function Chat({ match }) {
 					})}
 			</div>
 			<div className="chat-container">
-				<div className="input-field chat-box">
+				<form className="input-field chat-box">
 					<input
 						className="textarea input"
 						value={messageText}
 						id="msg-input"
 						type="text"
 						onChange={handleChange}
+						onKeyDown={handleEnter}
 						placeholder="Enter your message..."
 					/>
-					<button className="send-btn" onClick={sendMessage} disabled={messageText.trim() === ''}>
+					<button
+						className="send-btn"
+						type="button"
+						onClick={sendMessage}
+						disabled={messageText.trim() === ''}
+					>
 						<i class="small material-icons">send</i>
 					</button>
-				</div>
+				</form>
 			</div>
 			<Footer />
 		</div>
