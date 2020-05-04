@@ -9,8 +9,8 @@ function Chat({ match }) {
 
 	useEffect(() => {
 		db.ref('chats')
-			.child(match.params.receiverId)
 			.child(match.params.senderId)
+			.child(match.params.receiverId)
 			.orderByChild('time')
 			.on('child_added', (datasnapshot) => {
 				setMessages((messages) => [...messages, datasnapshot.val()]);
@@ -22,16 +22,34 @@ function Chat({ match }) {
 	};
 
 	const sendMessage = () => {
-		alert(messageText);
+		const msgData = {
+			message: messageText,
+			time: Date.now(),
+			sender: match.params.senderId,
+			receiver: match.params.receiverId,
+		};
+		db.ref('chats')
+			.child(match.params.senderId)
+			.child(match.params.receiverId)
+			.push(msgData)
+			.then(() => {
+				db.ref('chats')
+					.child(match.params.receiverId)
+					.child(match.params.senderId)
+					.push(msgData)
+					.then(() => {
+						setMessageText('');
+					});
+			});
 	};
 
 	return (
 		<div>
 			<Navbar />
-			<div className="chat-container" style={{ minHeight: '80vh' }}>
+			<div className="chat-container" style={{ minHeight: '70vh' }}>
 				{messages.length > 0 &&
 					messages.map((msg) => {
-						if (msg.sender !== match.params.senderId) {
+						if (msg.sender === match.params.senderId) {
 							return (
 								<li className="self">
 									<div className="msg">
