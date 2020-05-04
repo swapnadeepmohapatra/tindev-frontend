@@ -274,7 +274,7 @@ nav i.material-icons {
 }
 
 .self .msg {
-	background: #2eb3c9;
+	background: #21b9fc;
 	min-width: fit-content;
 	padding: 10px;
 	color: white;
@@ -287,7 +287,7 @@ nav i.material-icons {
 
 .self .msg :after {
 	border-left: 5px solid transparent;
-	border-top: 5px solid #2eb3c9;
+	border-top: 5px solid #21b9fc;
 	bottom: -5px;
 	content: '';
 	position: absolute;
@@ -326,4 +326,36 @@ nav i.material-icons {
 	content: '';
 	position: absolute;
 	left: 0px;
+}
+
+.chat-box {
+	display: flex;
+	background-color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 50px;
+}
+
+.input-field input[type]:not([readonly]),
+.input-field input[type]:focus:not([readonly]),
+.input-field textarea:not([readonly]),
+.input-field textarea:focus:not([readonly]) {
+	border-bottom: none;
+	box-shadow: none;
+	background-color: transparent;
+	margin-bottom: 0px;
+}
+
+.send-btn {
+	background-color: #ffffff;
+	border: none;
+	color: #21b9fc;
+}
+
+.send-btn:hover {
+	cursor: pointer;
+}
+
+.send-btn:disabled {
+	color: #c1c1c1;
 }

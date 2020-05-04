@@ -4,7 +4,8 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
 function Chat({ match }) {
-	const [message, setMessage] = useState([]);
+	const [messages, setMessages] = useState([]);
+	const [messageText, setMessageText] = useState('');
 
 	useEffect(() => {
 		db.ref('chats')
@@ -12,19 +13,24 @@ function Chat({ match }) {
 			.child(match.params.senderId)
 			.orderByChild('time')
 			.on('child_added', (datasnapshot) => {
-				setMessage((message) => [...message, datasnapshot.val()]);
+				setMessages((messages) => [...messages, datasnapshot.val()]);
 			});
 	}, []);
+
+	const handleChange = (e) => {
+		setMessageText(e.target.value);
+	};
+
+	const sendMessage = () => {
+		alert(messageText);
+	};
 
 	return (
 		<div>
 			<Navbar />
-			{/* {match.params.receiverId}
-			{match.params.senderId} */}
-
 			<div className="chat-container" style={{ minHeight: '80vh' }}>
-				{message.length > 0 &&
-					message.map((msg) => {
+				{messages.length > 0 &&
+					messages.map((msg) => {
 						if (msg.sender !== match.params.senderId) {
 							return (
 								<li className="self">
@@ -47,6 +53,21 @@ function Chat({ match }) {
 							);
 						}
 					})}
+			</div>
+			<div className="chat-container">
+				<div className="input-field chat-box">
+					<input
+						className="textarea input"
+						value={messageText}
+						id="msg-input"
+						type="text"
+						onChange={handleChange}
+						placeholder="Enter your message..."
+					/>
+					<button className="send-btn" onClick={sendMessage} disabled={messageText.trim() === ''}>
+						<i class="small material-icons">send</i>
+					</button>
+				</div>
 			</div>
 			<Footer />
 		</div>
