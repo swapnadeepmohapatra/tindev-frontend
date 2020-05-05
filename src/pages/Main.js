@@ -12,6 +12,7 @@ import yes from '../assets/yes.svg';
 import nope from '../assets/nope.svg';
 import itsamatch from '../assets/itsamatch.png';
 import io from 'socket.io-client';
+import { Link } from 'react-router-dom';
 
 const Main = ({ match }) => {
 	const [users, setUsers] = useState([]);
@@ -37,11 +38,10 @@ const Main = ({ match }) => {
 
 		setUsers(response.data);
 		setMeUser(myResponse.data);
-		console.log(myResponse.data);
 	};
 
 	const getMatch = () => {
-		const socket = io('http://localhost:4242', {
+		const socket = io(process.env.REACT_APP_SOCKET, {
 			query: { user: match.params.id },
 		});
 
@@ -61,19 +61,19 @@ const Main = ({ match }) => {
 	};
 
 	const addLikeUser = async (id) => {
+		setUsers((prev) => prev.slice(1));
+
 		await api.post(`/user/${id}/likes`, null, {
 			headers: { user: match.params.id },
 		});
-
-		setUsers((prev) => prev.slice(1));
 	};
 
 	const addDislikeUser = async (id) => {
+		setUsers((prev) => prev.slice(1));
+
 		await api.post(`/user/${id}/dislikes`, null, {
 			headers: { user: match.params.id },
 		});
-
-		setUsers((prev) => prev.slice(1));
 	};
 
 	if (userMatch) {
@@ -87,10 +87,10 @@ const Main = ({ match }) => {
 
 				<strong>{userMatch.name}</strong>
 				<p>{userMatch.bio}</p>
-				<button className="sendMsg" type="button" onClick={() => setUserMatch(null)}>
+				<Link to={`/chat/${userMatch._id}/${meUser._id}`} className="contSwipe" type="button">
 					Send Message
-				</button>
-				<button className="contSwipe" type="button" onClick={() => setUserMatch(null)}>
+				</Link>
+				<button className="sendMsg" type="button" onClick={() => setUserMatch(null)}>
 					Continue Swiping
 				</button>
 			</div>
@@ -163,7 +163,59 @@ const Main = ({ match }) => {
 					{true && (
 						<>
 							<span className="pulse">
-								{meUser === null ? <div></div> : <img src={meUser.photo} alt="You..." />}
+								{meUser === null ? (
+									<div className="preloader-wrapper big active">
+										<div className="spinner-layer spinner-blue">
+											<div className="circle-clipper left">
+												<div className="circle"></div>
+											</div>
+											<div className="gap-patch">
+												<div className="circle"></div>
+											</div>
+											<div className="circle-clipper right">
+												<div className="circle"></div>
+											</div>
+										</div>
+
+										<div className="spinner-layer spinner-red">
+											<div className="circle-clipper left">
+												<div className="circle"></div>
+											</div>
+											<div className="gap-patch">
+												<div className="circle"></div>
+											</div>
+											<div className="circle-clipper right">
+												<div className="circle"></div>
+											</div>
+										</div>
+
+										<div className="spinner-layer spinner-yellow">
+											<div className="circle-clipper left">
+												<div className="circle"></div>
+											</div>
+											<div className="gap-patch">
+												<div className="circle"></div>
+											</div>
+											<div className="circle-clipper right">
+												<div className="circle"></div>
+											</div>
+										</div>
+
+										<div className="spinner-layer spinner-green">
+											<div className="circle-clipper left">
+												<div className="circle"></div>
+											</div>
+											<div className="gap-patch">
+												<div className="circle"></div>
+											</div>
+											<div className="circle-clipper right">
+												<div className="circle"></div>
+											</div>
+										</div>
+									</div>
+								) : (
+									<img src={meUser.photo} alt="You..." />
+								)}
 							</span>
 							<div className="oops">OOPS!</div>
 							<div className="empty">No more devs! :(</div>

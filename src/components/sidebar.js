@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MatchCard from './matchCard';
 import { Link } from 'react-router-dom';
 
 function Sidebar({ user }) {
-	const [mymatches, setMymatches] = useState([]);
-
 	user
 		? (user = user)
 		: (user = {
@@ -27,7 +25,7 @@ function Sidebar({ user }) {
 				<li>
 					<div className="user-view">
 						<div className="background"></div>
-						<img className="circle" src={user.photo} />
+						<img alt="" className="circle" src={user.photo} />
 						<span className="white-text name" style={{ fontWeight: 'bold', fontSize: 20 }}>
 							{user.name}
 						</span>
@@ -35,7 +33,9 @@ function Sidebar({ user }) {
 					</div>
 				</li>
 				<li>
-					<a className="subheader">All Matches</a>
+					<a href="" className="subheader">
+						All Matches
+					</a>
 				</li>
 				{user.matches.length > 0 &&
 					user.matches.map((usr) => {

@@ -19,6 +19,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
 
 .login-container p {
@@ -367,6 +368,19 @@ nav i.material-icons {
 	font-size: 20px;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.menu-btn {
+	background: transparent;
+	border: none;
+	padding-left: 4px;
+	padding-right: 4px;
+	color: white;
+	cursor: pointer;
+}
+
+.menu-btn:focus {
+	background-color: transparent;
 }
 
 .send-btn {

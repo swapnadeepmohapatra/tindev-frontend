@@ -14,10 +14,10 @@ function Navbar({ isHome, user }) {
 			<nav className="navMain">
 				<div className="nav-wrapper">
 					{isHome && user && (
-						<a href="#" data-target="slide-out" className="sidenav-trigger show-on-large">
+						<button data-target="slide-out" className="sidenav-trigger show-on-large menu-btn">
 							{/*  show-on-large to show on big screens */}
 							<i className="material-icons">menu</i>
-						</a>
+						</button>
 					)}
 					<Link to="/" className="brand-logo center">
 						<img style={{ height: 50, marginTop: 10 }} src={require('../tinderLogo.png')} alt="Logo" />

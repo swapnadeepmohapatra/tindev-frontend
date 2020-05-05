@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import api from '../helper/api';
-import { useHistory } from 'react-router-dom';
 
 function Chat({ match, history }) {
 	const [messages, setMessages] = useState([]);
@@ -96,7 +95,7 @@ function Chat({ match, history }) {
 							alignItems: 'center',
 						}}
 					>
-						<img src={user.photo} className="circle" style={{ height: 64, width: 64 }} />
+						<img alt="" src={user.photo} className="circle" style={{ height: 64, width: 64 }} />
 						<p style={{ margin: 0, color: '#616C6F' }}>{user.name}</p>
 					</div>
 					<div></div>
