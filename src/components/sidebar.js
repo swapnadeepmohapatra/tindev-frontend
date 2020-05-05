@@ -27,17 +27,11 @@ function Sidebar({ user }) {
 				<li>
 					<div className="user-view">
 						<div className="background"></div>
-						<a href="#user">
-							<img className="circle" src={user.photo} />
-						</a>
-						<a href="#name">
-							<span className="white-text name" style={{ fontWeight: 'bold', fontSize: 20 }}>
-								{user.name}
-							</span>
-						</a>
-						<a href="#email" style={{ marginTop: 50 }}>
-							<span className="white-text email">{user.bio}</span>
-						</a>
+						<img className="circle" src={user.photo} />
+						<span className="white-text name" style={{ fontWeight: 'bold', fontSize: 20 }}>
+							{user.name}
+						</span>
+						<span className="white-text email">{user.bio}</span>
 					</div>
 				</li>
 				<li>

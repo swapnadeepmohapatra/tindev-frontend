@@ -42,6 +42,7 @@ function Chat({ match, history }) {
 		});
 
 		setUser(myResponse.data);
+		setLoading(false);
 	};
 
 	const sendMessage = () => {
@@ -72,7 +73,7 @@ function Chat({ match, history }) {
 				<Navbar />
 				<div className="chatbox-top">
 					<button
-						className="send-btn"
+						className="back-btn"
 						onClick={() => {
 							history.push(`/user/${match.params.senderId}`);
 						}}
@@ -139,7 +140,7 @@ function Chat({ match, history }) {
 							onClick={sendMessage}
 							disabled={messageText.trim() === ''}
 						>
-							<i class="small material-icons">send</i>
+							<span>SEND</span>
 						</button>
 					</form>
 				</div>
