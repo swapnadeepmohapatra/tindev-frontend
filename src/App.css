@@ -447,3 +447,51 @@ nav i.material-icons {
 	background-color: white;
 	outline: 1px solid white;
 }
+
+.pulse {
+	margin: auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background: #ffdedf;
+	box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+	-webkit-animation: pulse 2s infinite;
+	animation: pulse 2s infinite;
+	margin-top: 50px;
+	margin-bottom: 35px;
+	border: 2px solid #f5c9ca;
+	padding: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pulse img {
+	width: 70%;
+	border-radius: 100px;
+	border: 3px solid white;
+}
+
+.pulse:hover {
+	animation: none;
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		-webkit-box-shadow: 0 0 0 0 rgba(241, 201, 202, 0.4);
+	}
+	100% {
+		-webkit-box-shadow: 0 0 0 35px rgba(241, 201, 202, 0);
+	}
+}
+
+@keyframes pulse {
+	0% {
+		-moz-box-shadow: 0 0 0 0 rgba(241, 201, 202, 0.4);
+		box-shadow: 0 0 0 0 rgba(241, 201, 202, 0.4);
+	}
+	100% {
+		-moz-box-shadow: 0 0 35px 35px rgba(241, 201, 202, 0);
+		box-shadow: 0 0 35px 35px rgba(241, 201, 202, 0);
+	}
+}

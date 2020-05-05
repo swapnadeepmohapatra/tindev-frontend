@@ -162,6 +162,9 @@ const Main = ({ match }) => {
 
 					{true && (
 						<>
+							<span className="pulse">
+								{meUser === null ? <div></div> : <img src={meUser.photo} alt="You..." />}
+							</span>
 							<div className="oops">OOPS!</div>
 							<div className="empty">No more devs! :(</div>
 							<div className="empty" style={{ fontWeight: 'normal' }}>

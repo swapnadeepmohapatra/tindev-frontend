@@ -14,14 +14,7 @@ function Chat({ match, history }) {
 	useEffect(() => {
 		getUserData();
 
-		db.ref('chats')
-			.child(match.params.senderId)
-			.child(match.params.receiverId)
-			.orderByChild('time')
-			.on('child_added', (datasnapshot) => {
-				setMessages((messages) => [...messages, datasnapshot.val()]);
-				setLoading(false);
-			});
+		getChats();
 	}, []);
 
 	const handleChange = (e) => {
@@ -36,13 +29,26 @@ function Chat({ match, history }) {
 		}
 	};
 
+	const getChats = async () => {
+		await db
+			.ref('chats')
+			.child(match.params.senderId)
+			.child(match.params.receiverId)
+			.orderByChild('time')
+			.on('child_added', (datasnapshot) => {
+				setMessages((messages) => [...messages, datasnapshot.val()]);
+				setLoading(false);
+			});
+
+		setLoading(false);
+	};
 	const getUserData = async () => {
 		const myResponse = await api.get('/userById', {
 			headers: { userid: match.params.receiverId },
 		});
 
 		setUser(myResponse.data);
-		setLoading(false);
+		// setLoading(false);
 	};
 
 	const sendMessage = () => {
@@ -148,7 +154,13 @@ function Chat({ match, history }) {
 			</div>
 		);
 	} else {
-		return <div>Loading</div>;
+		return (
+			<div>
+				<span className="pulse">
+					<img src={user.photo} alt="You..." />
+				</span>
+			</div>
+		);
 	}
 }
 export default Chat;
