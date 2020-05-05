@@ -362,10 +362,11 @@ nav i.material-icons {
 .back-btn {
 	background: #ffffff;
 	border: none;
-	padding-left: 24px;
-	padding-right: 24px;
+	padding-left: 4px;
+	padding-right: 4px;
 	font-size: 20px;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .send-btn {
