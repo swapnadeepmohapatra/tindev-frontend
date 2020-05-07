@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import Sidebar from './sidebar';
 
-function Navbar({ isHome, user }) {
+function Navbar({ isHome, user, uid }) {
 	useEffect(() => {
 		let sidenav = document.querySelector('#slide-out');
 		M.Sidenav.init(sidenav, {});
@@ -19,9 +19,15 @@ function Navbar({ isHome, user }) {
 							<i className="material-icons">menu</i>
 						</button>
 					)}
-					<Link to="/" className="brand-logo center">
-						<img style={{ height: 50, marginTop: 10 }} src={require('../tinderLogo.png')} alt="Logo" />
-					</Link>
+					{isHome === true && uid ? (
+						<Link to={`/user/${uid}`} className="brand-logo center">
+							<img style={{ height: 50, marginTop: 10 }} src={require('../tinderLogo.png')} alt="Logo" />
+						</Link>
+					) : (
+						<Link to="/" className="brand-logo center">
+							<img style={{ height: 50, marginTop: 10 }} src={require('../tinderLogo.png')} alt="Logo" />
+						</Link>
+					)}
 				</div>
 			</nav>
 			{isHome && <Sidebar user={user} />}

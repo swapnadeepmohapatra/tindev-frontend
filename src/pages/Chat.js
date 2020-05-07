@@ -75,7 +75,7 @@ function Chat({ match, history }) {
 	if (!loading) {
 		return (
 			<div>
-				<Navbar />
+				<Navbar isHome={true} uid={match.params.senderId} />
 				<div className="chatbox-top">
 					<button
 						className="back-btn"

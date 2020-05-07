@@ -15,7 +15,7 @@ import io from 'socket.io-client';
 import { Link } from 'react-router-dom';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 
-const Main = ({ match, keyValue }) => {
+const Main = ({ match }) => {
 	const [users, setUsers] = useState([]);
 	const [userMatch, setUserMatch] = useState(null);
 	const [meUser, setMeUser] = useState(null);
@@ -91,7 +91,14 @@ const Main = ({ match, keyValue }) => {
 				<Link to={`/chat/${userMatch._id}/${meUser._id}`} className="contSwipe" type="button">
 					Send Message
 				</Link>
-				<button className="sendMsg" type="button" onClick={() => setUserMatch(null)}>
+				<button
+					className="sendMsg"
+					type="button"
+					onClick={() => {
+						setUserMatch(null);
+						window.location.reload();
+					}}
+				>
 					Continue Swiping
 				</button>
 			</div>
@@ -113,7 +120,7 @@ const Main = ({ match, keyValue }) => {
 						}
 					}}
 				/>
-				<Navbar isHome={true} user={meUser} />
+				{meUser && <Navbar isHome={true} user={meUser} uid={meUser._id} />}
 
 				<div className="main-container">
 					{users.length > 0 && (
@@ -170,7 +177,7 @@ const Main = ({ match, keyValue }) => {
 	return (
 		<>
 			<div className="empty-container" style={{ display: 'flex', flexDirection: 'column' }}>
-				<Navbar isHome={true} user={meUser} />
+				{meUser && <Navbar isHome={true} user={meUser} uid={meUser._id} />}
 				<div className="empty-container" style={{ display: 'flex', flexDirection: 'column' }}>
 					<p>{JSON.stringify(users[0])}</p>
 
