@@ -13,8 +13,9 @@ import nope from '../assets/nope.svg';
 import itsamatch from '../assets/itsamatch.png';
 import io from 'socket.io-client';
 import { Link } from 'react-router-dom';
+import KeyHandler, { KEYPRESS } from 'react-key-handler';
 
-const Main = ({ match }) => {
+const Main = ({ match, keyValue }) => {
 	const [users, setUsers] = useState([]);
 	const [userMatch, setUserMatch] = useState(null);
 	const [meUser, setMeUser] = useState(null);
@@ -100,7 +101,20 @@ const Main = ({ match }) => {
 	if (users.length > 0) {
 		return (
 			<>
+				<KeyHandler
+					keyEventName={KEYPRESS}
+					keyEventName="keydown"
+					keyValue={['ArrowLeft', 'ArrowRight']}
+					onKeyHandle={(a) => {
+						if (a.key === 'ArrowLeft') {
+							addDislikeUser(users[0]._id);
+						} else if (a.key === 'ArrowRight') {
+							addLikeUser(users[0]._id);
+						}
+					}}
+				/>
 				<Navbar isHome={true} user={meUser} />
+
 				<div className="main-container">
 					{users.length > 0 && (
 						<Grid
@@ -160,62 +174,68 @@ const Main = ({ match }) => {
 				<div className="empty-container" style={{ display: 'flex', flexDirection: 'column' }}>
 					<p>{JSON.stringify(users[0])}</p>
 
-					{true && (
+					{meUser === null ? (
 						<>
 							<span className="pulse">
-								{meUser === null ? (
-									<div className="preloader-wrapper big active">
-										<div className="spinner-layer spinner-blue">
-											<div className="circle-clipper left">
-												<div className="circle"></div>
-											</div>
-											<div className="gap-patch">
-												<div className="circle"></div>
-											</div>
-											<div className="circle-clipper right">
-												<div className="circle"></div>
-											</div>
+								<div className="preloader-wrapper big active">
+									<div className="spinner-layer spinner-blue">
+										<div className="circle-clipper left">
+											<div className="circle"></div>
 										</div>
-
-										<div className="spinner-layer spinner-red">
-											<div className="circle-clipper left">
-												<div className="circle"></div>
-											</div>
-											<div className="gap-patch">
-												<div className="circle"></div>
-											</div>
-											<div className="circle-clipper right">
-												<div className="circle"></div>
-											</div>
+										<div className="gap-patch">
+											<div className="circle"></div>
 										</div>
-
-										<div className="spinner-layer spinner-yellow">
-											<div className="circle-clipper left">
-												<div className="circle"></div>
-											</div>
-											<div className="gap-patch">
-												<div className="circle"></div>
-											</div>
-											<div className="circle-clipper right">
-												<div className="circle"></div>
-											</div>
-										</div>
-
-										<div className="spinner-layer spinner-green">
-											<div className="circle-clipper left">
-												<div className="circle"></div>
-											</div>
-											<div className="gap-patch">
-												<div className="circle"></div>
-											</div>
-											<div className="circle-clipper right">
-												<div className="circle"></div>
-											</div>
+										<div className="circle-clipper right">
+											<div className="circle"></div>
 										</div>
 									</div>
-								) : (
-									<img src={meUser.photo} alt="You..." />
-								)}
+
+									<div className="spinner-layer spinner-red">
+										<div className="circle-clipper left">
+											<div className="circle"></div>
+										</div>
+										<div className="gap-patch">
+											<div className="circle"></div>
+										</div>
+										<div className="circle-clipper right">
+											<div className="circle"></div>
+										</div>
+									</div>
+
+									<div className="spinner-layer spinner-yellow">
+										<div className="circle-clipper left">
+											<div className="circle"></div>
+										</div>
+										<div className="gap-patch">
+											<div className="circle"></div>
+										</div>
+										<div className="circle-clipper right">
+											<div className="circle"></div>
+										</div>
+									</div>
+
+									<div className="spinner-layer spinner-green">
+										<div className="circle-clipper left">
+											<div className="circle"></div>
+										</div>
+										<div className="gap-patch">
+											<div className="circle"></div>
+										</div>
+										<div className="circle-clipper right">
+											<div className="circle"></div>
+										</div>
+									</div>
+								</div>
+							</span>
+							<div className="oops">Loading...</div>
+							<div className="empty" style={{ fontWeight: 'normal' }}>
+								Fetching Devs Around You
+							</div>
+						</>
+					) : (
+						<>
+							<span className="pulse">
+								<img src={meUser.photo} alt="You..." />
 							</span>
 							<div className="oops">OOPS!</div>
 							<div className="empty">No more devs! :(</div>

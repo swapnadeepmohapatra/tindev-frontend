@@ -15,6 +15,7 @@
 		"react": "^16.13.1",
 		"react-deck-swiper": "^1.0.9",
 		"react-dom": "^16.13.1",
+		"react-key-handler": "^1.2.0-beta.3",
 		"react-loading-overlay": "^1.0.1",
 		"react-responsive": "^8.0.3",
 		"react-router-dom": "^5.1.2",
