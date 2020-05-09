@@ -10,7 +10,7 @@ const Login = ({ history }) => {
 	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = async (event) => {
-		if (username.trim() != '') {
+		if (username.trim() !== '') {
 			event.preventDefault();
 			setLoading(true);
 			const response = await api.post('/user', {
@@ -31,52 +31,52 @@ const Login = ({ history }) => {
 			<LoadingOverlay
 				active={loading}
 				spinner={
-					<div class="preloader-wrapper big active">
-						<div class="spinner-layer spinner-blue">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
+					<div className="preloader-wrapper big active">
+						<div className="spinner-layer spinner-blue">
+							<div className="circle-clipper left">
+								<div className="circle"></div>
 							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
+							<div className="gap-patch">
+								<div className="circle"></div>
 							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
-							</div>
-						</div>
-
-						<div class="spinner-layer spinner-red">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
-							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
-							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
+							<div className="circle-clipper right">
+								<div className="circle"></div>
 							</div>
 						</div>
 
-						<div class="spinner-layer spinner-yellow">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
+						<div className="spinner-layer spinner-red">
+							<div className="circle-clipper left">
+								<div className="circle"></div>
 							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
+							<div className="gap-patch">
+								<div className="circle"></div>
 							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
+							<div className="circle-clipper right">
+								<div className="circle"></div>
 							</div>
 						</div>
 
-						<div class="spinner-layer spinner-green">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
+						<div className="spinner-layer spinner-yellow">
+							<div className="circle-clipper left">
+								<div className="circle"></div>
 							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
+							<div className="gap-patch">
+								<div className="circle"></div>
 							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
+							<div className="circle-clipper right">
+								<div className="circle"></div>
+							</div>
+						</div>
+
+						<div className="spinner-layer spinner-green">
+							<div className="circle-clipper left">
+								<div className="circle"></div>
+							</div>
+							<div className="gap-patch">
+								<div className="circle"></div>
+							</div>
+							<div className="circle-clipper right">
+								<div className="circle"></div>
 							</div>
 						</div>
 					</div>

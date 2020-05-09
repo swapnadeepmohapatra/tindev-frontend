@@ -1,7 +1,5 @@
 import { db } from '../helper/firebase';
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
 import api from '../helper/api';
 
 function Chat({ match, history }) {
@@ -105,7 +103,7 @@ function Chat({ match, history }) {
 							messages.map((msg) => {
 								if (msg.sender === match.params.senderId) {
 									return (
-										<li className="self">
+										<li className="self" key={msg.time}>
 											<div className="msg">
 												<p>{msg.name}</p>
 												<div className="message"> {msg.message}</div>

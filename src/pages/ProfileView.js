@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import '../App.css';
 
 function ProfileView({ match, history }) {
 	const [userRepo, setUserRepo] = useState([]);
@@ -35,7 +36,6 @@ function ProfileView({ match, history }) {
 		axios
 			.get(`https://api.github.com/users/${match.params.userName}/repos?sort=created`)
 			.then((resp) => {
-				console.log(resp.data);
 				setUserRepo(resp.data);
 			})
 			.catch((err) => {
@@ -100,14 +100,20 @@ function ProfileView({ match, history }) {
 			{navBar()}
 			<div style={{ padding: 50 }}>
 				{userLangs &&
-					userLangs.map((item) => {
+					userLangs.map((item, index) => {
 						return (
-							<h5>
-								{item.language}:{item.percentage}%
-							</h5>
+							<div key={index}>
+								<span>{item.language}</span>
+								<div className="progress blue lighten-4 ">
+									<div className="determinate blue" style={{ width: `${item.percentage}%` }}></div>
+									{item.percentage}%
+								</div>
+							</div>
 						);
 					})}
-				<p>Disclaimer: Data is based on the 30 recent repos</p>
+				<p style={{ paddingTop: 20, color: '#616C6F' }}>
+					Disclaimer: Data is based on the 30 recent public repos
+				</p>
 			</div>
 		</>
 	);

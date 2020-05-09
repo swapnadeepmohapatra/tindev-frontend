@@ -530,3 +530,45 @@ aside {
 	-webkit-text-fill-color: transparent;
 	color: khaki;
 }
+
+.determinate {
+	width: 0;
+	-webkit-transition: width 1s ease-in-out;
+	transition: width 1s ease-in-out;
+	padding: 8px;
+	position: relative;
+	color: #fff;
+	white-space: nowrap;
+}
+
+.progress {
+	min-height: 36px;
+	overflow: hidden;
+	position: relative;
+	color: #000000;
+	padding: 8px;
+	z-index: 99999;
+	text-align: right;
+}
+.progress span {
+	position: relative;
+	float: left;
+	color: #fff;
+	padding: 8px;
+	z-index: 99999;
+}
+
+@-webkit-keyframes grow {
+	from {
+		width: 0;
+	}
+}
+
+@keyframes grow {
+	from {
+		width: 0;
+	}
+}
+.blue {
+	animation: grow 2s;
+}
