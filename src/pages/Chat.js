@@ -74,16 +74,15 @@ function Chat({ match, history }) {
 	};
 	if (!loading) {
 		return (
-			<div>
-				<Navbar isHome={true} uid={match.params.senderId} />
-				<div className="chatbox-top">
+			<aside>
+				<div className="chatbox-top header">
 					<button
 						className="back-btn"
 						onClick={() => {
 							history.push(`/user/${match.params.senderId}`);
 						}}
 					>
-						<i class="medium material-icons" style={{ color: 'red' }}>
+						<i className="medium material-icons" style={{ color: 'red' }}>
 							chevron_left
 						</i>
 					</button>
@@ -98,9 +97,9 @@ function Chat({ match, history }) {
 						<img alt="" src={user.photo} className="circle" style={{ height: 64, width: 64 }} />
 						<p style={{ margin: 0, color: '#616C6F' }}>{user.name}</p>
 					</div>
-					<div></div>
+					<div style={{ width: 64, height: 1 }}></div>
 				</div>
-				<div className="chat-container" style={{ minHeight: '70vh' }}>
+				<div className="chat-container">
 					<div className="scrollable-content">
 						{messages.length > 0 &&
 							messages.map((msg) => {
@@ -149,9 +148,32 @@ function Chat({ match, history }) {
 						</button>
 					</form>
 				</div>
-				<Footer />
-			</div>
+			</aside>
 		);
+		// return (
+		// 	<aside id="chatWindow">
+		// 		<div class="header">
+		// 			<h1>Live support</h1>
+		// 			<button class="btn-close" id="closeChat">
+		// 				<svg viewBox="0 0 47.971 47.971">
+		// 					<path
+		// 						fill="white"
+		// 						d="M28.228 23.986L47.092 5.122a2.998 2.998 0 000-4.242 2.998 2.998 0 00-4.242 0L23.986 19.744 5.121.88a2.998 2.998 0 00-4.242 0 2.998 2.998 0 000 4.242l18.865 18.864L.879 42.85a2.998 2.998 0 104.242 4.241l18.865-18.864L42.85 47.091c.586.586 1.354.879 2.121.879s1.535-.293 2.121-.879a2.998 2.998 0 000-4.242L28.228 23.986z"
+		// 					/>
+		// 				</svg>
+		// 			</button>
+		// 		</div>
+
+		// 		<div id="message-area" class="messages"></div>
+
+		// 		<div class="controls">
+		// 			<form id="textentry">
+		// 				<input id="textbox" type="text" />
+		// 				<input id="submit" type="submit" value="Send" />
+		// 			</form>
+		// 		</div>
+		// 	</aside>
+		// );
 	} else {
 		return (
 			<div>

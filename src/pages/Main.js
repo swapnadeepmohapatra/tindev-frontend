@@ -145,7 +145,11 @@ const Main = ({ match }) => {
 								}}
 							>
 								<Swipeable onSwipe={handleOnSwipe}>
-									<Card item={users[0]} />
+									{meUser && (
+										<Link to={`/view/user/${meUser._id}/${users[0].user}/${users[0]._id}`}>
+											<Card item={users[0]} />
+										</Link>
+									)}
 								</Swipeable>
 								<div className="buttons">
 									<button type="button" onClick={() => addDislikeUser(users[0]._id)}>
