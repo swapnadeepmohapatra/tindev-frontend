@@ -266,8 +266,11 @@ nav i.material-icons {
 	text-align: center;
 	margin-left: 25px;
 	margin-right: 25px;
-	width: 100%;
-	margin: 0 auto;
+	vertical-align: bottom;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 .self {
@@ -418,30 +421,31 @@ nav i.material-icons {
 }
 .scrollable-content {
 	flex-grow: 1;
-	height: 80vh;
 	overflow: auto;
 	min-height: 0;
 	padding-left: 10px;
 	padding-right: 10px;
+	min-height: 50vh;
 }
 
 .chat-input-container {
 	position: relative;
 	padding-left: 100px;
 	padding-right: 100px;
+	bottom: 0px;
 }
 
 @media (min-width: 320px) and (max-width: 580px) {
 	.chat-container {
-		margin: 0 auto;
 		padding-left: 10px;
 		padding-right: 10px;
 		padding-top: 0px;
 		text-align: center;
-		margin-left: 25px;
-		margin-right: 25px;
-		width: 100%;
-		margin: 0 auto;
+		margin: 0;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
 	}
 
 	.chat-input-container {
@@ -509,4 +513,10 @@ nav i.material-icons {
 		-moz-box-shadow: 0 0 35px 35px rgba(241, 201, 202, 0);
 		box-shadow: 0 0 35px 35px rgba(241, 201, 202, 0);
 	}
+}
+
+aside {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
