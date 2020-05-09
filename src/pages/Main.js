@@ -9,13 +9,14 @@ import Grid from '@material-ui/core/Grid';
 import dislike from '../assets/dislike.svg';
 import like from '../assets/like.svg';
 import yes from '../assets/yes.svg';
+import info from '../assets/info.svg';
 import nope from '../assets/nope.svg';
 import itsamatch from '../assets/itsamatch.png';
 import io from 'socket.io-client';
 import { Link } from 'react-router-dom';
 import KeyHandler, { KEYPRESS } from 'react-key-handler';
 
-const Main = ({ match }) => {
+const Main = ({ match, history }) => {
 	const [users, setUsers] = useState([]);
 	const [userMatch, setUserMatch] = useState(null);
 	const [meUser, setMeUser] = useState(null);
@@ -96,7 +97,6 @@ const Main = ({ match }) => {
 					type="button"
 					onClick={() => {
 						setUserMatch(null);
-						window.location.reload();
 					}}
 				>
 					Continue Swiping
@@ -105,18 +105,22 @@ const Main = ({ match }) => {
 		);
 	}
 
-	if (users.length > 0) {
+	if (users.length > 0 && meUser) {
 		return (
 			<>
 				<KeyHandler
 					keyEventName={KEYPRESS}
 					keyEventName="keydown"
-					keyValue={['ArrowLeft', 'ArrowRight']}
+					keyValue={['ArrowLeft', 'ArrowRight', 'ArrowUp']}
 					onKeyHandle={(a) => {
 						if (a.key === 'ArrowLeft') {
 							addDislikeUser(users[0]._id);
 						} else if (a.key === 'ArrowRight') {
 							addLikeUser(users[0]._id);
+						} else if (a.key === 'ArrowUp') {
+							// addLikeUser(users[0]._id);
+							// alert('UP');
+							history.push(`/view/user/${meUser._id}/${users[0].user}/${users[0]._id}`);
 						}
 					}}
 				/>
@@ -144,18 +148,18 @@ const Main = ({ match }) => {
 									display: 'flex',
 								}}
 							>
-								<Swipeable onSwipe={handleOnSwipe}>
-									{meUser && (
-										<Link to={`/view/user/${meUser._id}/${users[0].user}/${users[0]._id}`}>
-											<Card item={users[0]} />
-										</Link>
-									)}
-								</Swipeable>
+								<Swipeable onSwipe={handleOnSwipe}>{meUser && <Card item={users[0]} />}</Swipeable>
 								<div className="buttons">
 									<button type="button" onClick={() => addDislikeUser(users[0]._id)}>
 										<img src={dislike} className="btnDislike" alt="Dislike" />
 									</button>
-
+									<button type="button">
+										{meUser && (
+											<Link to={`/view/user/${meUser._id}/${users[0].user}/${users[0]._id}`}>
+												<i className="material-icons btnInfo">info</i>
+											</Link>
+										)}
+									</button>
 									<button type="button" onClick={() => addLikeUser(users[0]._id)}>
 										<img src={like} className="btnLike" alt="Like" />
 									</button>
@@ -164,6 +168,10 @@ const Main = ({ match }) => {
 									<div>
 										<img src={nope} alt="Like" />
 										<p>NOPE</p>
+									</div>
+									<div>
+										<img src={info} alt="Like" />
+										<p>OPEN PROFILE</p>
 									</div>
 									<div>
 										<img src={yes} alt="Like" />

@@ -81,7 +81,7 @@ function ProfileView({ match, history }) {
 
 		for (let i = 0; i < arr[0].length; i++) {
 			let b = {};
-			let pc = (arr[1][i] / sum) * 100;
+			let pc = Math.round((arr[1][i] / sum) * 100);
 			b.language = arr[0][i];
 			b.percentage = pc;
 			a.push(b);

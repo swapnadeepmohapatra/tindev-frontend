@@ -28,6 +28,12 @@ function Navbar({ isHome, user, uid }) {
 							<img style={{ height: 50, marginTop: 10 }} src={require('../tinderLogo.png')} alt="Logo" />
 						</Link>
 					)}
+					{isHome && user && (
+						<Link to="/" className="sidenav-trigger show-on-large menu-btn right">
+							{/*  show-on-large to show on big screens */}
+							<i className="material-icons">exit_to_app</i>
+						</Link>
+					)}
 				</div>
 			</nav>
 			{isHome && <Sidebar user={user} />}

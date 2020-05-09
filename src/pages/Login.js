@@ -10,15 +10,20 @@ const Login = ({ history }) => {
 	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = async (event) => {
-		event.preventDefault();
-		setLoading(true);
-		const response = await api.post('/user', {
-			username,
-		});
+		if (username.trim() != '') {
+			event.preventDefault();
+			setLoading(true);
+			const response = await api.post('/user', {
+				username,
+			});
 
-		const { _id } = response.data;
-		setLoading(false);
-		history.push(`/user/${_id}`);
+			const { _id } = response.data;
+			setLoading(false);
+			history.push(`/user/${_id}`);
+		} else {
+			event.preventDefault();
+			alert('Enter your GitHub Username');
+		}
 	};
 
 	return (
