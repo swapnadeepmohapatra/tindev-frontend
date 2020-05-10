@@ -1,8 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+# Tindev
+  [![Netlify Status](https://api.netlify.com/api/v1/badges/36e12b81-4bce-49a8-a279-ee2739b21afe/deploy-status)](https://app.netlify.com/sites/tindev-app/deploys)
+  
+It is an online code dating app that allows Devs to anonymously swipe to like or dislike other profiles based on their GitHub profile. Once two Devs have “matched, ” they can exchange messages.  
+
+___description___ Researching co-worker is something difficult. Tindev offers you the opportunity to simply accelerate the process by finding out which is the best match. With this you can login with your github ID and you can swipe through differnt devs and if two devs like each other then they match and they can chat over this app. Through this they can get the best co-worker for them and may be the co-founder for a big firm.
+
+___stack___ `MongoDB` is used for the database, `Node.js` and `Express.js` for the Backend, `React.js` for the frontend and `Socket.io` is used for Real-Time Communication.
+
+This Repo is the frontend part of Tindev Web App .
+Here is the [**Backend**](https://github.com/swapnadeepmohapatra/tindev-backend) Repo.
+## HOSTED LINKS
+
+[Backend](https://tindev-swapnadeep.herokuapp.com/)
+[Frontend](https://tindev.swapnadeep.com/)
+
+## PROJECT STRUCTURE
+	
+	├── public      # Static files
+	|
+	├── src         # Main Source Code
+	| ├── Components     # Reusable components
+	| ├── Helper         # API Calls
+	| ├── Assests        # SVG assests
+	| └── Pages          # Pages in Routing
+	|
+	├── index.js      # Main Entry Point  
+	└── Routes.js     # Routing files 
+
+	
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+This will install all the dependencies mentioned in the package.json
 
 ### `yarn start`
 
@@ -11,58 +46,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
