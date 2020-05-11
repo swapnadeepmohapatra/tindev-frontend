@@ -31,7 +31,7 @@ Here is the [**Backend**](https://github.com/swapnadeepmohapatra/tindev-backend)
 
 	
 
-## Available Scripts
+## AVAILABLE SCRIPTS
 
 In the project directory, you can run:
 
@@ -46,3 +46,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+## SUPPORT ME
+
+<a href="https://www.buymeacoffee.com/swapnadeep" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
